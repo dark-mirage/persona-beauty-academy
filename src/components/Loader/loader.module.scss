@@ -1,0 +1,96 @@
+/* ───────── базовый контейнер ───────── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity .7s ease;
+  background: #FFF5E1;             /* тёплый персиковый */
+}
+
+.visible { opacity: 1; }
+.hidden  { opacity: 0; pointer-events: none; }
+
+/* ───────── пастельные «ауры» ───────── */
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 65vw;
+  height: 65vw;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: .45;
+}
+
+.loader::before { top: -38vh; left: -30vw;  background: #F8BBD0; } /* нежно-розовый */
+.loader::after  { bottom: -38vh; right: -32vw; background: #FDE2AE; } /* абрикосовый */
+
+/* лёгкий «шиммер» */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .1) 0 2px,
+    transparent 2px 6px);
+  opacity: .12;
+  animation: move 8s linear infinite;
+  pointer-events: none;
+}
+
+/* ───────── кольцо-аура ───────── */
+.ring {
+  position: relative;
+  width: 7.5rem;           /* 120 px */
+  height: 7.5rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    #F8BBD0 0deg,
+    #FDB8C0 90deg,
+    #FDE2AE 180deg,
+    #FAD6D6 270deg,
+    #F8BBD0 360deg
+  );
+  animation: spin 2s linear infinite;
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 6px));
+          mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 6px));
+}
+
+/* подпись-скрипт */
+.label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #6d4c41;          /* какао-коричневый */
+  animation: pulse 2.8s ease-in-out infinite;
+  user-select: none;
+}
+
+/* ───────── keyframes ───────── */
+@keyframes spin   { to { transform: rotate(360deg); } }
+@keyframes pulse  {
+  0%, 100% { opacity: .65; transform: scale(.98); }
+  50%      { opacity: 1;    transform: scale(1);  }
+}
+@keyframes move   {
+  0%   { background-position: 0 0;   }
+  100% { background-position: 200% 0;}
+}

@@ -1,0 +1,124 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 50px 0;
+}
+
+.stage {
+    position: relative;
+    flex: 1 0 360px;
+    max-width: 530px;
+    min-width: 390px;
+    height: max-content;
+    padding-left: 30px;
+    border-left: 1px solid #373737;
+
+    &:first-child {
+        top: 32px;
+    }
+
+    &:nth-child(2) {
+        top: 116px;
+    }
+
+    &:nth-child(3) {
+        top: -6px;
+    }
+
+    .img {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    h5 {
+        margin-top: 80px;
+        font-family: "Inter";
+    }
+
+    h2 {
+        margin-top: 50px;
+        font-size: 96px;
+        color: #373737;
+    }
+
+    h3 {
+        margin-top: 30px;
+        font-size: 32px;
+        color: #373737;
+    }
+
+    .descr {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #4E4E4E;
+        font-family: "Inter";
+    }
+}
+
+@media (max-width: 1360px) {
+    .container {
+        padding: 50px 0;
+        gap: 35px;
+        justify-content: center;
+    }
+
+    .stage {
+        position: unset;
+
+    }
+}
+
+@media (max-width:768px) {
+    .stage {
+        min-width: 100%;
+        flex-shrink: 1;
+        padding: 0;
+        border: 0;
+
+        &:not(:first-child) {
+            margin-top: 35px;
+        }
+
+        h5 {
+            margin-top: 35px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 46px;
+            color: #373737;
+        }
+
+        h3 {
+            margin-top: 16px;
+            font-size: 28px;
+            color: #373737;
+        }
+
+        .descr {
+            margin-top: 6px;
+            font-size: 16px;
+            color: #4E4E4E;
+            font-family: "Inter";
+        }
+    }
+}
+
+/* начальное состояние */
+.stage {
+  opacity: 0;
+  transform: translateY(80px) scale(0.96);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* карточка вошла в зону видимости */
+.stage.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

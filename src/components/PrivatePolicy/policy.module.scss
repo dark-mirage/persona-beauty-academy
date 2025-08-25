@@ -1,0 +1,62 @@
+/* =========  Palette  ========= */
+$peach:  #FFFFF0;   /* основной фон */
+$accent: #FFFFF0;   /* ссылки и акценты (приглушённый розовый) */
+$text:   #34312f;   /* тёмно-коричневый / почти серый */
+$divider:#FFFFF0;   /* тонкая линия-разделитель */
+
+/* =========  Layout  ========= */
+.wrapper {
+  background: $peach;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.container {
+  max-width: 720px;
+  width: 100%;
+  color: $text;
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.65;
+
+  /* разделительные линии внутри документа */
+  & > * + h2 {
+    border-top: 1px solid $divider;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: .75rem;
+  }
+
+  ul, ol { padding-left: 1.2rem; }
+  li     { margin: .35rem 0; }
+
+  a {
+    color: $accent;
+    text-decoration: underline;
+    &:hover { color: darken($accent, 10%); }
+  }
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: .5rem;
+  color: $text;
+}
+
+.date {
+  text-align: center;
+  font-size: .85rem;
+  color: rgba($text, .65);
+  margin-bottom: 2.25rem;
+}
+
+/* ========= (Удалены миксин и орбы) ========= */

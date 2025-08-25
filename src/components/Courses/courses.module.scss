@@ -1,0 +1,158 @@
+/* ---------------------------------------------------
+   COURSES MODULE — ОСНОВНАЯ СЕТКА
+--------------------------------------------------- */
+.container { position: relative; width: 100%; }
+
+.row {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  &:first-child .content { transform: translateY(1px); }
+  &:last-child  .content { transform: translateY(-1px); }
+
+  /* чередуем направление 👉🏼 | 👈🏼 */
+  &:nth-child(2n + 1) { flex-direction: row-reverse; }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  width: calc(50% - 160px - 0.5px);
+  padding: 80px;
+  border: 1px solid #373737;
+  box-sizing: content-box;
+}
+
+/* ---------- колонки ---------- */
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 44.27%;
+
+  h4 { font-size: 64px; }
+  h5 { margin-top: 20px; font-size: 32px; }
+
+  .descr {
+    margin-top: 10px;
+    font-family: "Inter";
+    font-size: 20px;
+    color: #4E4E4E;
+  }
+
+  .img { width: 100%; img { width: 100%; } }
+
+  .button {
+    width: 100%;
+    margin-top: auto;
+    padding: 16px 0;
+    background-color: #FAD4B7;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover { background-color: #f5c098; }
+    p { text-align: center; font-size: 32px; }
+  }
+}
+
+/* ---------- пустая половина с заголовком ---------- */
+.empty {
+  width: 50%;
+  padding-left: 110px;
+  color: #373737;
+
+  h2 { font-size: 96px; }
+  h3 { font-size: 50px; max-width: 70%; }
+}
+
+.button { margin-top: 100px; padding: 0 80px; font-size: 32px; }
+
+/* ---------------------------------------------------
+   АДАПТИВ  ≤ 1360 PX
+--------------------------------------------------- */
+@media (max-width: 1360px) {
+  /* делаем все строки колонками */
+  .row,
+  .row:nth-child(2n + 1) {                 /* ПЕРЕОПРЕДЕЛЯЕМ! */
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    padding: 60px 20px;
+    border: 0;
+    border-bottom: 1px solid #373737;
+    transform: unset;
+    box-sizing: border-box;
+  }
+
+  .empty {
+    width: 100%;
+    padding: 0 20px;
+
+    h2 { font-size: 78px; }
+    h3 { font-size: 42px; max-width: 100%; }
+  }
+
+  .col .button { margin-top: 15px; }
+}
+
+/* ---------------------------------------------------
+   АДАПТИВ  ≤ 768 PX
+--------------------------------------------------- */
+@media (max-width: 768px) {
+  /* снова переопределяем псевдокласс для мобильного */
+  .row,
+  .row:nth-child(2n + 1) {
+    flex-direction: column;
+  }
+
+  .row .content {
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 35px 20px;
+    border: 0;
+    border-bottom: 1px solid #373737;
+  }
+
+  .col {
+    width: 100%;
+
+    h4 { font-size: 42px; }
+    h5 { margin-top: 16px; font-size: 24px; }
+    .descr { margin-top: 8px; font-size: 16px; }
+  }
+
+  .empty {
+    h2 { font-size: 46px; }
+    h3 { font-size: 26px; max-width: 100%; }
+  }
+
+  .button { padding: 0 20px; }
+}
+
+/* ---------------------------------------------------
+   АНИМАЦИИ (visible)
+--------------------------------------------------- */
+
+/* начальные состояния */
+.row .content,
+.row .empty {
+  opacity: 0;
+  transform: translateY(80px) scale(0.96);
+  transition: transform 0.9s ease-out, opacity 0.9s ease-out;
+}
+
+.row .content .img    { transform: scale(0.9);  transition: transform 1s ease-out; }
+.row .content .button { transform: scale(0.85); transition: transform 0.9s 0.15s ease-out; }
+
+/* когда строка становится видимой */
+.row.visible .content,
+.row.visible .empty   { opacity: 1; transform: translateY(0) scale(1); }
+
+.row.visible .content .img    { transform: scale(1); }
+.row.visible .content .button { transform: scale(1); }

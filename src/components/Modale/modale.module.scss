@@ -1,0 +1,175 @@
+.modale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    animation: modale-fade-in 0.35s;
+}
+
+@keyframes modale-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modale_wrapp {
+    padding: 50px 50px 20px;
+    border-radius: 18px;
+    background-color: #202020;
+    border: 3px solid #474747;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.38);
+
+    transform: scale(0.9);
+    opacity: 0;
+    animation: modale-zoom-in .4s cubic-bezier(.28,.63,.57,1.35) forwards;
+
+    h2 {
+        font-size: 42px;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+        width: 320px;
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px 25px;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 1.1rem;
+            color: #111;
+            background-color: #e7e7e7;
+            border: 2px solid #bdbdbd;
+            border-radius: 16px;
+            resize: none;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color .18s, box-shadow .18s;
+            &::placeholder {
+                color: #474747;
+                opacity: .9;
+            }
+            &:focus {
+                border-color: #38bdf8;
+                box-shadow: 0 2px 12px 0 rgba(56,189,248,0.12);
+            }
+            &:disabled {
+                background: #cccccc;
+            }
+        }
+
+        button {
+            padding: 15px 25px;
+            border-radius: 16px;
+            background: linear-gradient(92deg,#38bdf8 20%,#0ea5e9 100%);
+            color: #fff;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 1.07rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .2s, color .2s, box-shadow .18s;
+            box-shadow: 0 3px 12px 0 rgba(56,189,248,0.11);
+            border: none;
+            margin-top: 2px;
+            &:hover:not(:disabled) {
+                background: #111;
+                color: #38bdf8;
+            }
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                background: #bdbdbd;
+                color: #222;
+            }
+        }
+    }
+}
+
+@keyframes modale-zoom-in {
+    0% { transform: scale(0.86); opacity: 0; }
+    70% { transform: scale(1.04); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.button {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform .17s;
+    &:hover {
+        transform: scale(1.14) rotate(-10deg);
+    }
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 12px 0 4px 0;
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none;
+    color: #bdbdbd;
+    font-family: "Inter", sans-serif;
+    line-height: 1.4;
+
+    input[type="checkbox"] {
+        accent-color: #38bdf8;
+        width: 19px;
+        height: 19px;
+        border-radius: 6px;
+        margin-top: 2px;
+        flex-shrink: 0;
+    }
+
+    span {
+        display: block;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+}
+
+.privacyLink {
+    color: #38bdf8;
+    text-decoration: underline;
+    margin-left: 4px;
+    transition: color .2s;
+    &:hover {
+        color: #fff;
+    }
+}
+
+.errorMsg {
+    color: #ff4c4c;
+    font-size: 0.94em;
+    margin-bottom: -8px;
+    margin-top: -8px;
+    min-height: 18px;
+    padding-left: 6px;
+    transition: color .13s;
+}
+
+@media (max-width: 768px) {
+    .modale_wrapp {
+        margin: 0 8px;
+        padding: 26px 7vw 17px;
+        form { width: 100%; }
+        h2 { font-size: 27px; }
+    }
+    .button { top: 11px; right: 10px; }
+}

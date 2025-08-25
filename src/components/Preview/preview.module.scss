@@ -1,0 +1,151 @@
+/* preview.module.scss */
+.preview {
+  background-color: #F4FFFB;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 177px 80px 50px;
+  }
+
+  .img_block {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .text_block {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    width: 50%;
+    min-width: 730px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .title {
+      color: #373737;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 49px;
+
+      &:hover {
+        color: #0F5132;
+        cursor: pointer;
+
+        span {
+          color: #0F5132;
+        }
+      }
+    }
+
+    p {
+      font-size: 96px;
+      text-align: right;
+    }
+
+    span {
+      font-family: "Inter";
+      font-size: 20px;
+      line-height: 45px;
+      color: #373737;
+    }
+  }
+
+  .meta_data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    font-family: Inter;
+    color: #888888;
+  }
+}
+
+@media (max-width: 1360px) {
+  .preview {
+    .container {
+      padding: 104px 20px 50px;
+    }
+
+    .text_block {
+      p {
+        font-size: 76px;
+      }
+    }
+
+    .meta_data {
+      margin-top: -50px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .preview {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      padding-top: 70px;
+    }
+
+    .img_block {
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      max-width: none;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(203, 224, 10, 0.15);
+      filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.25));
+      bottom: 10px;
+      position: absolute;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    .text_block {
+      width: 100%;
+      margin-top: 20px;
+      min-width: unset;
+
+      p {
+        font-size: 38px;
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+
+    .meta_data {
+      margin-top: 20px;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+}

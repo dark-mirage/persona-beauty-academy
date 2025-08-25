@@ -1,0 +1,36 @@
+.callback {
+  background-color: #F4FFFB;
+}
+
+.container {
+  max-width: 1920px;
+  padding: 50px 80px;
+  margin: 0 auto;
+
+  .heading {
+    margin-bottom: 30px;
+    color: #373737;
+    font-size: 64px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 50px 20px;
+
+    .heading {
+      font-size: 46px;
+    }
+  }
+}
+/* ---------- анимация wrapper'а ---------- */
+.container.visible {
+  animation: growIn 0.8s forwards cubic-bezier(0.2, 0.8, 0.25, 1);
+  transform-origin: center;
+}
+
+@keyframes growIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}

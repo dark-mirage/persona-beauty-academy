@@ -1,0 +1,18 @@
+.layout {
+
+    max-width: 1920px;
+    padding: 0 80px;
+    margin: 0 auto;
+}
+
+@media (max-width:1360px) {
+    .layout {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width:768px) {
+    .layout {
+        padding: 0 20px;
+    }
+}

@@ -1,0 +1,35 @@
+// components/WhatsAppButton/whatsApp.module.scss
+
+.whatsappButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  background: #25d366;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    background: #1da851;
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+
+  // Мобильная адаптация
+  @media (max-width: 600px) {
+    right: 12px;
+    bottom: 12px;
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+}
