@@ -59,7 +59,11 @@
     gap: 110px;
     font-weight: 400;
 
-    a { text-decoration: none; color: inherit; }
+    a { 
+      text-decoration: none;
+      color: inherit; }
+
+      
     .col { gap: 20px; }
   }
 
@@ -159,4 +163,10 @@
     flex-direction: column;
     .copyright_item { flex: 0 0 100%; text-align: left; }
   }
+}
+
+
+a:hover {
+  color: #0F5132 !important;
+  cursor: pointer;
 }
